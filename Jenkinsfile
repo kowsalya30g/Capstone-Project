@@ -1,12 +1,12 @@
 pipeline {
     agent any
     tools {
-        nodejs 'nodejs'
+        nodejs 'Node'
     }
     stages {
         stage('Build') {
             steps {
-                checkout scmGit(branches: [[name: '*/Dev']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/Induprojects/Capstone-Project.git']])
+                // checkout scmGit(branches: [[name: '*/Dev']], extensions: [], userRemoteConfigs: [[credentialsId: 'Github', url: 'https://github.com/Induprojects/Capstone-Project.git']])
                 sh 'npm install'
                 // sh 'npm run build'
             }
@@ -20,7 +20,7 @@ pipeline {
        stage('Build Image') {
             steps { 
                 sh 'docker build -t reactimage .'
-                sh 'docker tag reactimage:latest indumathicloud001/dev:latest'
+                sh 'docker tag reactapp:v1 indumathicloud001/dev:latest'
             }    
        }
        stage('Docker login') {
