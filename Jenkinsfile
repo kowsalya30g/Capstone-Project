@@ -20,7 +20,7 @@ pipeline {
        stage('Build Image') {
             steps { 
                 sh 'docker build -t reactimage:v1 .'
-                sh 'docker tag reactapp:v1 kousalyag/jenkinsreact:latest'
+                sh 'docker tag reactimage:v1 kousalyag/jenkinsreact:latest'
             }    
        }
        stage('Docker login') {
